@@ -87,21 +87,24 @@
 
     /* MENU PANEL */
 /* Dropdown Menu Panel - FIXED POSITIONING */
-    .menu-panel {
-      position: absolute;
-      top: calc(100% + 0.75rem);
-      left: 0;
-      min-width: 240px;
-      background: var(--surface);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-soft);
-      border: 1px solid var(--border-subtle);
-      padding: 0.75rem 0.75rem;
-      display: none;
-      flex-direction: column;
-      gap: 0.25rem;
-      animation: dropdownFade 0.18s ease-out;
-    }
+/* Dropdown Menu Panel - FIXED POSITIONING */
+.menu-panel {
+  position: absolute;
+  top: 100%;
+  right: 0;              /* aligns panel directly below Menu button */
+  transform: translateY(10px); /* small downward offset */
+  width: 240px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  padding: 1rem;
+  display: none;
+  flex-direction: column;
+  gap: 0.5rem;
+  border: 1px solid #e5e7eb;
+  z-index: 2000;
+}
+
 
     .menu-panel a {
       display: block;

@@ -141,6 +141,88 @@
     .nav-links a:hover::after {
       width: 100%;
     }
+    /* Minimal top-right MENU button */
+.menu-button {
+  background: var(--ink);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.menu-button:hover {
+  background: var(--crimson-dark);
+  transform: translateY(-2px);
+}
+
+/* Dropdown Menu Panel */
+.menu-panel {
+  position: absolute;
+  top: 100%;
+  right: 20px;
+  width: 240px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  padding: 1rem;
+  display: none;
+  flex-direction: column;
+  gap: 0.5rem;
+  border: 1px solid #e5e7eb;
+  z-index: 2000;
+}
+
+.menu-panel a {
+  text-decoration: none;
+  color: var(--gray-text);
+  font-weight: 500;
+  padding: 0.5rem 0.2rem;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.menu-panel a:hover {
+  background: #fef2f2;
+  color: var(--crimson-dark);
+}
+
+/* Submenu styling */
+.submenu {
+  display: flex;
+  flex-direction: column;
+}
+
+.submenu-toggle {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 0.5rem 0.2rem;
+  font-weight: 600;
+  color: var(--gray-text);
+  cursor: pointer;
+}
+
+.submenu-items {
+  display: none;
+  flex-direction: column;
+  padding-left: 0.5rem;
+}
+
+.submenu-items a {
+  font-size: 0.9rem;
+}
+
+.menu-panel.open {
+  display: flex;
+}
+
+.submenu.open .submenu-items {
+  display: flex;
+}
+
 
     /* Dropdown */
 
@@ -835,66 +917,36 @@
 
 <body>
   <header>
-    <nav class="container">
-      <div class="logo">
-        Data Activism Program
-        <span>Liberatory Computing</span>
+  <nav class="container">
+    <div class="logo">Data Activism Program</div>
+
+    <!-- NEW Minimal Menu Button -->
+    <button class="menu-button" id="menuButton">Menu ☰</button>
+
+    <!-- Dropdown Menu Panel -->
+    <div class="menu-panel" id="menuPanel">
+      <a href="#about">About</a>
+      <a href="#data-activism">Data Activism</a>
+
+      <!-- Curriculum Dropdown -->
+      <div class="submenu">
+        <button class="submenu-toggle">Curriculum ▸</button>
+        <div class="submenu-items">
+          <a href="curriculum-overview.html">Curriculum Overview</a>
+          <a href="modules.html">Course Modules</a>
+          <a href="teacher-resources.html">Teacher Resources</a>
+          <a href="https://liberatorycomputing.github.io/DataActivismProgram/protected" target="_blank">Access Secure Curriculum</a>
+        </div>
       </div>
 
-      <button class="nav-toggle" aria-label="Toggle navigation">
-        <div class="nav-toggle-line"></div>
-      </button>
+      <a href="https://liberatorycomputing.github.io/DataActivismExhibit" target="_blank">Data Activism Exhibit</a>
+      <a href="#people">People</a>
+      <a href="#publications">Publications</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
 
-      <ul class="nav-links">
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#data-activism" class="nav-link">Data Activism</a></li>
-
-        <!-- Dropdown: Curriculum -->
-        <li class="has-dropdown">
-          <button class="dropdown-toggle nav-link" type="button">
-            Curriculum
-            <span class="caret"></span>
-          </button>
-          <div class="dropdown-menu">
-            <a href="curriculum-overview.html">
-              Curriculum Overview
-              <span>Framing & learning goals</span>
-            </a>
-            <a href="modules.html">
-              Course Modules
-              <span>Unit-by-unit breakdown</span>
-            </a>
-            <a href="teacher-resources.html">
-              Teacher Resources
-              <span>Guides, materials & supports</span>
-            </a>
-            <a
-              href="https://liberatorycomputing.github.io/DataActivismProgram/protected"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Access Secure Curriculum
-              <span>Full protected curriculum site</span>
-            </a>
-          </div>
-        </li>
-
-        <li>
-          <a
-            href="https://liberatorycomputing.github.io/DataActivismExhibit"
-            class="nav-link"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Data Activism Exhibit</a
-          >
-        </li>
-
-        <li><a href="#people" class="nav-link">People</a></li>
-        <li><a href="#publications" class="nav-link">Publications</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
   <main>
     <!-- HERO -->
@@ -1514,5 +1566,35 @@
       });
     });
   </script>
+
+<script>
+
+// Toggle main menu
+const menuButton = document.getElementById("menuButton");
+const menuPanel = document.getElementById("menuPanel");
+
+menuButton.addEventListener("click", () => {
+  menuPanel.classList.toggle("open");
+});
+
+// Close menu when clicking anywhere else
+document.addEventListener("click", (e) => {
+  if (!menuPanel.contains(e.target) && !menuButton.contains(e.target)) {
+    menuPanel.classList.remove("open");
+  }
+});
+
+// Submenu toggle
+document.querySelectorAll(".submenu-toggle").forEach((toggle) => {
+  toggle.addEventListener("click", function () {
+    const parent = this.parentElement;
+    parent.classList.toggle("open");
+  });
+});
+
+
+
+</script>
+
 </body>
 </html>

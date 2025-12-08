@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>People • Data Activism Program</title>
+
+  <style>
+    :root {
+      --crimson: #b51234;
+      --crimson-dark: #8e0f29;
+      --ink: #111827;
+      --gray-text: #4b5563;
+      --gray-muted: #9ca3af;
+      --gray-light: #f3f4f6;
+      --gray-lighter: #f9fafb;
+      --surface: #ffffff;
+      --border-subtle: #e5e7eb;
+      --radius-md: 10px;
+      --radius-lg: 18px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.12);
+      --sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+      --serif: Georgia, "Times New Roman", serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f9fafb;
+      font-family: var(--sans);
+      color: var(--gray-text);
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* HEADER */
+    header {
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom: 1px solid #e5e7eb;
+      backdrop-filter: blur(16px);
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      padding: 0.8rem 0;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    /* MENU BUTTON */
+    .menu-button {
+      background: var(--ink);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .menu-button:hover {
+      background: var(--crimson-dark);
+      transform: translateY(-2px);
+    }
+
+    /* MENU PANEL */
+    .menu-panel {
+      position: absolute;
+      top: 100%;
+      right: 20px;
+      width: 240px;
+      background: white;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      display: none;
+      flex-direction: column;
+      gap: 0.6rem;
+      border: 1px solid var(--border-subtle);
+      z-index: 2000;
+    }
+
+    .menu-panel a {
+      text-decoration: none;
+      padding: 0.5rem;
+      border-radius: 6px;
+      font-weight: 500;
+      color: var(--gray-text);
+      transition: 0.25s ease;
+    }
+
+    .menu-panel a:hover {
+      background: #fee2e2;
+      color: var(--crimson-dark);
+    }
+
+    /* SUBMENU */
+    .submenu {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .submenu-toggle {
+      background: none;
+      border: none;
+      text-align: left;
+      font-weight: 600;
+      color: var(--gray-text);
+      padding: 0.5rem 0.2rem;
+      cursor: pointer;
+    }
+
+    .submenu-items {
+      display: none;
+      padding-left: 0.6rem;
+      flex-direction: column;
+    }
+
+    .submenu-items a {
+      font-size: 0.9rem;
+      padding: 0.4rem;
+    }
+
+    .menu-panel.open {
+      display: flex;
+    }
+
+    .submenu.open .submenu-items {
+      display: flex;
+    }
+
+    /* PAGE HEADER */
+    .page-header {
+      margin-top: 120px;
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .page-header h1 {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      color: var(--ink);
+    }
+
+    .page-header p {
+      color: var(--gray-muted);
+      max-width: 700px;
+      margin: 0.5rem auto 0;
+    }
+
+    /* PEOPLE GRID */
+    .people-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 4rem;
+    }
+
+    .person-card {
+      background: white;
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 1.6rem;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+      transition: 0.3s ease;
+    }
+
+    .person-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.12);
+    }
+
+    .person-card h3 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+
+    .person-card p strong {
+      color: var(--crimson-dark);
+    }
+
+    .person-card ul {
+      margin-left: 1rem;
+      margin-top: 0.8rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #020617;
+      padding: 2.4rem 0;
+      text-align: center;
+      color: #e5e7eb;
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <nav class="container">
+      <div class="logo">Data Activism Program</div>
+
+      <button class="menu-button" id="menuButton">Menu ☰</button>
+
+      <div class="menu-panel" id="menuPanel">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#data-activism">Data Activism</a>
+
+        <div class="submenu">
+          <button class="submenu-toggle">Curriculum ▸</button>
+          <div class="submenu-items">
+            <a href="curriculum-overview.html">Curriculum Overview</a>
+            <a href="modules.html">Course Modules</a>
+            <a href="teacher-resources.html">Teacher Resources</a>
+            <a href="https://liberatorycomputing.github.io/DataActivismProgram/protected" target="_blank">
+              Access Secure Curriculum
+            </a>
+          </div>
+        </div>
+
+        <a href="https://liberatorycomputing.github.io/DataActivismExhibit" target="_blank">
+          Data Activism Exhibit
+        </a>
+
+        <a href="people.html">People</a>
+        <a href="publications.html">Publications</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- PAGE TITLE -->
+  <div class="page-header container">
+    <h1>People</h1>
+    <p>The contributors, researchers, students, and collaborators who make the Data Activism Program possible.</p>
+  </div>
+
+  <!-- PEOPLE GRID -->
+  <div class="container">
+    <div class="people-grid">
+
+      <div class="person-card">
+        <h3>Raechel Walker</h3>
+        <p><strong>Founder</strong></p>
+        <p>A PhD student in the Personal Robots Group. Developed the Data Activism Program Curriculum.</p>
+      </div>
+
+      <div class="person-card">
+        <h3>Mathew Taylor</h3>
+        <p><strong>Former Software Engineer</strong></p>
+      </div>
+
+      <div class="person-card">
+        <h3>Cynthia Breazeal</h3>
+        <p><strong>Professor of Media Arts and Sciences; MIT Dean for Digital Learning</strong></p>
+      </div>
+
+      <div class="person-card">
+        <h3>Other Contributors</h3>
+        <ul>
+          <li>Brady Cruse (MIT)</li>
+          <li>Samira Shirazy (University of Washington)</li>
+          <li>Saara Uthmaan (University of Washington)</li>
+          <li>Eghosa Ohenhen (MIT)</li>
+          <li>Kortni Foreman (MIT)</li>
+          <li>Chase Vanias (MIT)</li>
+          <li>Sophia Brady (Boston University)</li>
+          <li>Olivia Dias (MIT)</li>
+        </ul>
+      </div>
+
+      <div class="person-card">
+        <h3>Additional Contributors</h3>
+        <ul>
+          <li>Elijah Johnson (MIT)</li>
+          <li>Lian Liu (Wellesley College)</li>
+          <li>Zeynep Yalçin (Wellesley College)</li>
+          <li>Lina Henriquez (FIU / MIT MSRP)</li>
+          <li>Raymond Walker II (High School Researcher)</li>
+          <li>Nathan Bradshaw (High School Researcher)</li>
+          <li>Justin Delk (High School Researcher)</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Raechel Walker. All rights reserved.</p>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    const menuButton = document.getElementById("menuButton");
+    const menuPanel = document.getElementById("menuPanel");
+
+    menuButton.addEventListener("click", () => {
+      menuPanel.classList.toggle("open");
+    });
+
+    // Close menu if clicking outside
+    document.addEventListener("click", (e) => {
+      if (!menuPanel.contains(e.target) && !menuButton.contains(e.target)) {
+        menuPanel.classList.remove("open");
+      }
+    });
+
+    // Submenu toggles
+    document.querySelectorAll(".submenu-toggle").forEach((toggle) => {
+      toggle.addEventListener("click", function () {
+        const parent = this.parentElement;
+        parent.classList.toggle("open");
+      });
+    });
+  </script>
+
+</body>
+</html>

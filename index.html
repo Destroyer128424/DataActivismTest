@@ -539,23 +539,32 @@
       margin-bottom: 1rem;
       font-size: 0.97rem;
     }
-/* ABOUT SECTION SIDE-BY-SIDE LAYOUT */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
-  align-items: start;
+/* Make text + video the same height */
+.about-equal {
+  display: flex;
+  gap: 2rem;
+  align-items: stretch;   /* KEY: make columns equal height */
 }
 
+/* Both sides become equal-height boxes */
+.about-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Text formatting */
 .about-text p {
   margin-bottom: 1rem;
-  font-size: 1rem;
+  line-height: 1.6;
+  flex-grow: 1;
 }
 
+/* Video scales to fill height */
 .about-video .video-wrapper {
   position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
+  width: 100%;
+  height: 100%;  /* KEY: match text height */
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
@@ -569,14 +578,14 @@
   height: 100%;
 }
 
-/* MOBILE — Stack vertically */
+/* Mobile layout: stack vertically */
 @media (max-width: 850px) {
-  .about-grid {
-    grid-template-columns: 1fr;
+  .about-equal {
+    flex-direction: column;
   }
-  
-  .about-video {
-    margin-top: 1.5rem;
+
+  .about-video .video-wrapper {
+    height: 250px; /* reasonable mobile height */
   }
 }
 
@@ -1026,12 +1035,12 @@
     <!-- ABOUT -->
 <section id="about">
   <div class="container">
-    <div class="about-grid">
-      
+    <div class="about-equal">
+
       <!-- LEFT SIDE: TEXT -->
-      <div class="about-text">
+      <div class="about-box about-text">
         <h2>About</h2>
-        <p>
+ <p>
           The underrepresentation of minoritized groups, particularly African Americans, is 
           the longstanding reality of computing fields. Computing has the opportunity to 
           change the world and is increasingly being incorporated into our daily lives. 
@@ -1058,7 +1067,7 @@
       </div>
 
       <!-- RIGHT SIDE: VIDEO -->
-      <div class="about-video">
+      <div class="about-box about-video">
         <div class="video-wrapper">
           <iframe
             src="https://www.youtube.com/embed/rdmL_IaAVCs"
@@ -1073,6 +1082,7 @@
     </div>
   </div>
 </section>
+
 
 
     <!-- DATA ACTIVISM -->

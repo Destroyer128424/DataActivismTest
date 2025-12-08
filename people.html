@@ -70,8 +70,8 @@
 
     /* MENU BUTTON */
     .menu-button {
-      background: var(--ink);
-      color: white;
+      background: var(white);
+      color: var(--ink);
       border: none;
       padding: 0.6rem 1.2rem;
       border-radius: 8px;
@@ -227,38 +227,29 @@
 
   <!-- HEADER -->
   <header>
-    <nav class="container">
-      <div class="logo">Data Activism Program</div>
+  <nav class="container">
+    <div class="logo">Data Activism Program</div>
 
-      <button class="menu-button" id="menuButton">Menu ☰</button>
+    <!-- NEW Minimal Menu Button -->
+    <button class="menu-button" id="menuButton">Menu ☰</button>
 
-      <div class="menu-panel" id="menuPanel">
-        <a href="index.html">Home</a>
-        <a href="index.html#about">About</a>
-        <a href="index.html#data-activism">Data Activism</a>
+    <!-- Dropdown Menu Panel -->
+    <div class="menu-panel" id="menuPanel">
+      <a href="#about">About</a>
+      <a href="#data-activism">Data Activism</a>
 
-        <div class="submenu">
-          <button class="submenu-toggle">Curriculum ▸</button>
-          <div class="submenu-items">
-            <a href="curriculum-overview.html">Curriculum Overview</a>
-            <a href="modules.html">Course Modules</a>
-            <a href="teacher-resources.html">Teacher Resources</a>
-            <a href="https://liberatorycomputing.github.io/DataActivismProgram/protected" target="_blank">
-              Access Secure Curriculum
-            </a>
-          </div>
-        </div>
+      <!-- Curriculum Dropdown -->
+      <a href="https://liberatorycomputing.github.io/DataActivismProgram/protected" target="_blank">Curriculum</a>
 
-        <a href="https://liberatorycomputing.github.io/DataActivismExhibit" target="_blank">
-          Data Activism Exhibit
-        </a>
 
-        <a href="people.html">People</a>
-        <a href="publications.html">Publications</a>
-        <a href="index.html#contact">Contact</a>
-      </div>
-    </nav>
-  </header>
+      <a href="https://liberatorycomputing.github.io/DataActivismExhibit" target="_blank">Data Activism Exhibit</a>
+      <a href="people.html">People</a>
+      <a href="#publications">Publications</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
 
   <!-- PAGE TITLE -->
   <div class="page-header container">

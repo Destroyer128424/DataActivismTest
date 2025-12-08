@@ -37,7 +37,8 @@
 
 
      <!-- PEOPLE -->
-
+    <section id="people">
+      <div class="container">
         <div class="section-inner">
           <h2>People</h2>
           <p class="section-intro">
@@ -102,7 +103,8 @@
             </div>
           </div>
         </div>
-
+      </div>
+    </section>
 
 
   <!-- FOOTER -->
@@ -111,29 +113,114 @@
   </footer>
 
   <!-- JS -->
-  <script>
-    const menuButton = document.getElementById("menuButton");
-    const menuPanel = document.getElementById("menuPanel");
-
-    menuButton.addEventListener("click", () => {
-      menuPanel.classList.toggle("open");
-    });
-
-    // Close menu if clicking outside
-    document.addEventListener("click", (e) => {
-      if (!menuPanel.contains(e.target) && !menuButton.contains(e.target)) {
-        menuPanel.classList.remove("open");
+   <script>
+    // Header scroll effect
+    window.addEventListener("scroll", function () {
+      const header = document.querySelector("header");
+      if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
       }
     });
 
-    // Submenu toggles
-    document.querySelectorAll(".submenu-toggle").forEach((toggle) => {
-      toggle.addEventListener("click", function () {
-        const parent = this.parentElement;
+    // Intersection Observer for reveal animations
+    const observerOptions = {
+      threshold: 0.15,
+    };
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          obs.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe sections
+    document.querySelectorAll("section").forEach((sec) => {
+      observer.observe(sec);
+    });
+
+    // Observe person cards
+    document.querySelectorAll(".person-card").forEach((card) => {
+      observer.observe(card);
+    });
+
+    // Observe publication items
+    document.querySelectorAll(".publication-item").forEach((item) => {
+      observer.observe(item);
+    });
+
+    // Mobile nav toggle
+    const navToggle = document.querySelector(".nav-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    if (navToggle && navLinks) {
+      navToggle.addEventListener("click", () => {
+        navToggle.classList.toggle("open");
+        navLinks.classList.toggle("open");
+      });
+    }
+
+    // Dropdown toggle (for mobile and accessibility)
+    const dropdownParents = document.querySelectorAll(".has-dropdown");
+
+    dropdownParents.forEach((parent) => {
+      const toggle = parent.querySelector(".dropdown-toggle");
+      const dropdown = parent.querySelector(".dropdown-menu");
+
+      if (!toggle || !dropdown) return;
+
+      toggle.addEventListener("click", (e) => {
+        // Prevent hover behavior override on desktop; this is mostly for mobile
+        const isMobile = window.matchMedia("(max-width: 768px)").matches;
+        if (!isMobile) return;
+
+        e.stopPropagation();
         parent.classList.toggle("open");
       });
     });
+
+    // Close mobile nav when clicking a link
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", () => {
+        if (navLinks.classList.contains("open")) {
+          navLinks.classList.remove("open");
+          navToggle.classList.remove("open");
+        }
+      });
+    });
   </script>
+
+<script>
+
+// Toggle main menu
+const menuButton = document.getElementById("menuButton");
+const menuPanel = document.getElementById("menuPanel");
+
+menuButton.addEventListener("click", () => {
+  menuPanel.classList.toggle("open");
+});
+
+// Close menu when clicking anywhere else
+document.addEventListener("click", (e) => {
+  if (!menuPanel.contains(e.target) && !menuButton.contains(e.target)) {
+    menuPanel.classList.remove("open");
+  }
+});
+
+// Submenu toggle
+document.querySelectorAll(".submenu-toggle").forEach((toggle) => {
+  toggle.addEventListener("click", function () {
+    const parent = this.parentElement;
+    parent.classList.toggle("open");
+  });
+});
+
+
+
+</script>
 
 </body>
 </html>

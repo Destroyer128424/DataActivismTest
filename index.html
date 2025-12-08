@@ -539,6 +539,46 @@
       margin-bottom: 1rem;
       font-size: 0.97rem;
     }
+/* ABOUT SECTION SIDE-BY-SIDE LAYOUT */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.about-text p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.about-video .video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.about-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* MOBILE — Stack vertically */
+@media (max-width: 850px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .about-video {
+    margin-top: 1.5rem;
+  }
+}
 
     /* ----------------- PEOPLE ----------------- */
 
@@ -984,43 +1024,56 @@
     </section>
 
     <!-- ABOUT -->
-    <section id="about">
-      <div class="container">
-        <div class="section-inner">
-          <h2>About</h2>
-          <p class="section-intro">
-            Reimagining who belongs in computing and what computing is for.
-          </p>
-          <p>
-            The underrepresentation of minoritized groups, particularly African
-            Americans, is the longstanding reality of computing fields. Computing
-            has the opportunity to change the world and is increasingly being
-            incorporated into our daily lives. Computing classes often discuss
-            computing as abstract, neutral, utopian and unable to cause harm.
-          </p>
-          <p>
-            While everyone needs to be part of the process of ending a
-            multi-layered system of barriers, we focus specifically on why this
-            goal is of particular relevance to African American students. We
-            highlight El-Amin's "liberation tools," which state how a sound racial
-            identity, critical consciousness, liberation-centered achievement
-            identity, collective obligation, along with activism skills are
-            essential to preparing African Americans to "fight for" racial
-            liberation.
-          </p>
-          <p>
-            Given that computing classes teach students critical thinking skills
-            to solve complicated problems, we argue that computing is
-            well-positioned to incorporate "liberation tools". They teach
-            students how to think in terms of systems, which is essential for
-            racial liberation. By expanding the liberation tools, we coin the
-            term, "liberatory computing", to reveal how computing curricula can
-            motivate and provide African American students with practical skills
-            to address the racism embedded in society.
-          </p>
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      
+      <!-- LEFT SIDE: TEXT -->
+      <div class="about-text">
+        <h2>About</h2>
+        <p>
+          The underrepresentation of minoritized groups, particularly African Americans, is 
+          the longstanding reality of computing fields. Computing has the opportunity to 
+          change the world and is increasingly being incorporated into our daily lives. 
+          Computing classes discuss computing as abstract, neutral, utopian and unable to 
+          cause harm.
+        </p>
+        <p>
+          While everyone needs to be part of the process of ending a multi-layered system of 
+          barriers, we focus specifically on why this goal is of particular relevance to 
+          African American students. We highlight El-Amin's "liberation tools," which state 
+          how a sound racial identity, critical consciousness, liberation-centered achievement 
+          identity, collective obligation, along with activism skills are essential to 
+          preparing African Americans to "fight for" racial liberation.
+        </p>
+        <p>
+          Given that computing classes teach students critical thinking skills to solve 
+          complicated problems, we argue that computing is well-positioned to incorporate 
+          "liberation tools". They teach students how to think in terms of systems, which is 
+          essential for racial liberation. By expanding the liberation tools, we coin the 
+          term, "liberatory computing", to reveal how computing curricula can motivate and 
+          provide African American students with practical skills to address the racism 
+          embedded in society.
+        </p>
+      </div>
+
+      <!-- RIGHT SIDE: VIDEO -->
+      <div class="about-video">
+        <div class="video-wrapper">
+          <iframe
+            src="https://www.youtube.com/embed/rdmL_IaAVCs"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
         </div>
       </div>
-    </section>
+
+    </div>
+  </div>
+</section>
+
 
     <!-- DATA ACTIVISM -->
     <section id="data-activism">
@@ -1173,16 +1226,6 @@
             <p>Also, please watch the video below about the data activism program:</p>
           </div>
 
-          <!-- Video -->
-          <div class="video-wrapper">
-            <iframe
-              src="https://www.youtube.com/embed/rdmL_IaAVCs"
-              title="Data Activism Program - YouTube video"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
-          </div>
 
           <!-- Partners -->
           <div class="partner-links">

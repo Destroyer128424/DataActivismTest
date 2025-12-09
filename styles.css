@@ -963,79 +963,45 @@
   box-shadow: 0 10px 25px rgba(0,0,0,0.12);
   border: 1px solid #ddd;
 }
-/* STUDENT PROJECT SECTION */
-.student-projects-container {
-  max-width: 760px;
-  margin: 0 auto;
+/* Student Projects / Linktree Style */
+.linktree-block {
   text-align: center;
-  padding: 3rem 0;
 }
 
-.student-projects-header {
+.linktree-block h2.centered {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: var(--ink);
+}
+
+/* The vertical list container */
+.project-links {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-bottom: 2rem;
+  gap: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-.project-avatar {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.student-projects-header h2 {
-  margin-top: 1rem;
-  font-size: 1.4rem;
-  color: var(--ink);
-}
-
-/* Small Link Cards */
-.project-card {
-  background: #ffffff;
-  border-radius: 30px;
-  padding: 1rem 1.3rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-  margin-bottom: 1rem;
-}
-
-.project-card-icon {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-right: 1rem;
-}
-
-.project-card span {
-  flex-grow: 1;
-  font-size: 1rem;
-  text-align: center;
-  font-weight: 600;
-  color: var(--ink);
-}
-
-.project-card-link {
-  text-decoration: none;
-  font-size: 1.8rem;
-  color: #777;
-  padding-left: 0.5rem;
-}
-
-/* Big Canva Image Card */
-.project-image-card {
-  border-radius: 25px;
-  overflow: hidden;
-  margin: 1.2rem 0;
-  box-shadow: 0 12px 25px rgba(0,0,0,0.12);
-}
-
-.project-image-card img {
-  width: 100%;
+/* Each link styled like Linktree rounded buttons */
+.project-link {
   display: block;
-  border-radius: 25px;
+  text-decoration: none;
+  background: #ffffff;
+  padding: 1rem 1.4rem;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gray-text);
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  transition: all 0.2s ease;
+}
+
+.project-link:hover {
+  background: #f8fafc;
+  border-color: var(--crimson);
+  color: var(--crimson);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
 }

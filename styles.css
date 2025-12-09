@@ -963,3 +963,79 @@
   box-shadow: 0 10px 25px rgba(0,0,0,0.12);
   border: 1px solid #ddd;
 }
+/* STUDENT PROJECT SECTION */
+.student-projects-container {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.student-projects-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.project-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.student-projects-header h2 {
+  margin-top: 1rem;
+  font-size: 1.4rem;
+  color: var(--ink);
+}
+
+/* Small Link Cards */
+.project-card {
+  background: #ffffff;
+  border-radius: 30px;
+  padding: 1rem 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  margin-bottom: 1rem;
+}
+
+.project-card-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+
+.project-card span {
+  flex-grow: 1;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.project-card-link {
+  text-decoration: none;
+  font-size: 1.8rem;
+  color: #777;
+  padding-left: 0.5rem;
+}
+
+/* Big Canva Image Card */
+.project-image-card {
+  border-radius: 25px;
+  overflow: hidden;
+  margin: 1.2rem 0;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+}
+
+.project-image-card img {
+  width: 100%;
+  display: block;
+  border-radius: 25px;
+}
